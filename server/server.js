@@ -9,7 +9,7 @@ const dotenv = require("dotenv");
 
 const app = express();
 
-if (process.env.NODE_ENV !== "PROD")
+if (process.env.NODE_ENV !== "PRODUCTION")
   dotenv.config({ path: "server/config/.env" });
 
 // Replace with your Mongo Atlas URI
