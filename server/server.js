@@ -4,22 +4,19 @@ const expressGraphQL = require("express-graphql");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const schema = require("./schema/schema");
-const connectDatabse = require("./config/database.js");
 const dotenv = require("dotenv");
+
+dotenv.config({ path: "server/config/.env" });
 
 const app = express();
 
-if (process.env.NODE_ENV !== "PRODUCTION")
-  dotenv.config({ path: "server/config/.env" });
-
 // Replace with your Mongo Atlas URI
-const MONGO_URI = process.env.DB_URI;
-if (!MONGO_URI) {
+if (!process.env.MONGO_URI) {
   throw new Error("You must provide a Mongo Atlas URI");
 }
 
 mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
+mongoose.connect(process.env.MONGO_URI);
 mongoose.connection
   .once("open", () => console.log("Connected to Mongo Atlas instance."))
   .on("error", (error) =>
