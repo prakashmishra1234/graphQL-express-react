@@ -13,9 +13,6 @@ class SongList extends Component {
       })
       .then(() => {
         this.props.data.refetch();
-      })
-      .catch((error) => {
-        console.error("Error deleting song:", error);
       });
   }
 

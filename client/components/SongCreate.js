@@ -22,9 +22,6 @@ class SongCreate extends Component {
         this.setState({ title: "" });
         hashHistory.push("/");
       })
-      .catch((error) => {
-        console.error("Error creating song:", error);
-      });
   }
 
   render() {

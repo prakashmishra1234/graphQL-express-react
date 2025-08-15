@@ -26,9 +26,6 @@ class LyricCreate extends Component {
       })
       .then(() => {
         this.setState({ content: "" });
-      })
-      .catch((error) => {
-        console.error("Error submitting lyric:", error);
       });
   }
 
@@ -51,10 +48,11 @@ const mutation = gql`
     addLyricToSong(content: $content, songId: $songId) {
       id
       lyrics {
+        id
         content
       }
     }
   }
 `;
 
-export default LyricCreate;
+export default graphql(mutation)(LyricCreate);
